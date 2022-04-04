@@ -13,4 +13,4 @@ Just some boys tying to make a mediocre auto text completion software using the 
 - Data Scraping for training text
 - Front end and JS prediction logic
 - Finalizing Chain formatting and structure
-- 
+- Do hard math on probibility of back and foward calculation 
