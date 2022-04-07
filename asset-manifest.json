@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/MarkovTextGeneration/static/css/main.073c9b0a.css",
-    "main.js": "/MarkovTextGeneration/static/js/main.44fe301f.js",
-    "static/js/787.dfcfc66c.chunk.js": "/MarkovTextGeneration/static/js/787.dfcfc66c.chunk.js",
-    "static/media/logo.svg": "/MarkovTextGeneration/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/MarkovTextGeneration/index.html",
-    "main.073c9b0a.css.map": "/MarkovTextGeneration/static/css/main.073c9b0a.css.map",
-    "main.44fe301f.js.map": "/MarkovTextGeneration/static/js/main.44fe301f.js.map",
-    "787.dfcfc66c.chunk.js.map": "/MarkovTextGeneration/static/js/787.dfcfc66c.chunk.js.map"
+    "main.css": "/reactapplication/static/css/main.073c9b0a.css",
+    "main.js": "/reactapplication/static/js/main.b3dc2108.js",
+    "static/js/787.dfcfc66c.chunk.js": "/reactapplication/static/js/787.dfcfc66c.chunk.js",
+    "static/media/logo.svg": "/reactapplication/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/reactapplication/index.html",
+    "main.073c9b0a.css.map": "/reactapplication/static/css/main.073c9b0a.css.map",
+    "main.b3dc2108.js.map": "/reactapplication/static/js/main.b3dc2108.js.map",
+    "787.dfcfc66c.chunk.js.map": "/reactapplication/static/js/787.dfcfc66c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.44fe301f.js"
+    "static/js/main.b3dc2108.js"
   ]
 }
