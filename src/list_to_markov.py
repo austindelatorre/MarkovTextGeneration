@@ -30,8 +30,21 @@ def build_freq_dict(text, degree):
 
 # if key exits then adds value to a list of values for that key; otherwise creates a new entry
 def update_dict(freq_dict, phrase, next_word):
-    freq = 1
 
-    # If phrase is already in dict and next_word is already in next_words dict
-    if phrase in freq_dict and next_word in freq_dict[phrase]:
+    # If phrase is already in dict
+    if phrase in freq_dict:
+
+        # next_word is already in next_words dict
+        if next_word in freq_dict[phrase]:
+            freq = freq_dict[phrase][next_word] + 1
+            freq_dict[phrase][next_word] = freq
+
+        # next word is not already in inner dict
+        else:
+            freq_dict[phrase][next_word] = 1
+
+    # phrase is not in dict
+    else:
+
+
 
