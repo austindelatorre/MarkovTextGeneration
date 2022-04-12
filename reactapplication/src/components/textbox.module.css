@@ -1,0 +1,17 @@
+.text{
+    padding: 16px;
+    border-bottom: 1px dashed #dbdbdb;
+}
+
+.text textarea {
+    margin-top: 50px;
+    height: 100px;
+    box-sizing: border-box;
+    width:100%;
+    background: none;
+    border: none;
+    outline: none;
+    font:inherit;
+    padding: 0;
+    resize: none;
+}
