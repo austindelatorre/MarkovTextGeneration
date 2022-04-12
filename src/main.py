@@ -1,5 +1,6 @@
 import list_to_markov as markov
 import pprint
+import parse
 
 
 # Delete
@@ -20,13 +21,15 @@ def fake_text():
 
 
 def main():
+    pp = pprint.PrettyPrinter(indent=4)
+    text = parse.get_text("https://www.gutenberg.org/files/11/11-h/11-h.htm")
+    # pp.pprint(text)
 
     # Text is a 2D list. Outerlist is sentences, inner list is words within sentence
-    text = fake_text()   # Insert Dylan's function here
+    # text = fake_text()   # Insert Dylan's function here
 
     # Temporary
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(markov.list_to_markov(text, 1))
+    pp.pprint(markov.list_to_markov(text, 2))
 
 
 if __name__ == "__main__":

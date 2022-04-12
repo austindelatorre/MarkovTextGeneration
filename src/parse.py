@@ -3,6 +3,11 @@ import requests
 import re
 
 
+# Notes for improvement:
+# - Spacing / readability
+# - Some words do not have account for spaces properly (which means some keys are jammed together)
+# - Watch for apostrophes
+
 # Takes a url and returns the webpage's tokenized text using beautifulsoup.
 # Cleans the text using regexp (removes numbers, equations, punctuation, and lowercases every string).
 # -- I'm sure the data cleaning can be improved
