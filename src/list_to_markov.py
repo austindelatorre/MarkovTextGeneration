@@ -39,7 +39,6 @@ def count_next_word_freq(next_word_dict):
 
     return sum
 
-
 # Returns a dictionary of dictionaries :
 # { key (phrase of degree words) :  { next_word1: prob1 , next_word2: prob2, ...}}
 def build_freq_dict(text, degree):
