@@ -9,7 +9,7 @@ Just some boys tying to make a mediocre auto text completion software using the 
 - run ```python main.py``` to generate dictionary *"dict.json"* (currently 1 to 5 degrees) for the urls in *"urls.txt"*
 - run ```node predict_text.js``` to test text prediction with dictionary "dict.json"
   - Need to use the function ```predict_text(...)``` in react part of application 
-# About ```predict_text(...)```
+### About ```predict_text(...)```
 - Full function header: ```predict_text(data, seed_key, n, constant_key_size, max_key_size)```
   - **data**: the re-parsed json file back into the dictionary of arrays of arrays
     - Currently parsing is done at top of the file. Maybe put into a function?
