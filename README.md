@@ -32,7 +32,7 @@ Just some boys tying to make a mediocre auto text completion software using the 
  A very hacky first implementation of the concept. 
 ## To-Do
 - Data Scraping for training text
-   - **STILL BROKEN SOMTIMES**
+   - **STILL BROKEN SOMETIMES**
 - Parsing Data needs to be fixed
 - Front end and JS prediction logic
    - Prediction is mostly done
