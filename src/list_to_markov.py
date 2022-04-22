@@ -7,8 +7,11 @@
 # Returns a dictionary of list of tuples  (sorted by frequency):
 # { key (phrase of degree words) :  [ (next_word1, prob1) , (next_word2, prob2), ...}}
 def list_to_markov(text, degree):
-    # Builds nested dictionary of probabilities
-    prob_dict = freq_to_prob(build_freq_dict(text, degree))
+
+    # Builds nested dictionary of probabilities for 1 to degree_words
+    prob_dict = {}
+    for k in range(1, degree + 1):
+        prob_dict.update(freq_to_prob(build_freq_dict(text, k)))
 
     # Convert inner dictionary to list of tuples (to be sorted by probability)
     for phrase in prob_dict:

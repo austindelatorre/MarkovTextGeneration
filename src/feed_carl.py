@@ -9,5 +9,7 @@ def feed():
         text = []
         for line in file:
             text += parse.get_text(line)
+            print("Just parsed ", line )
            #  json.write(markov.list_to_markov(parse.get_text(line), 2))
-        json.write(markov.list_to_markov(text, 2), "dict")
+        print(text)
+        json.write(markov.list_to_markov(text, 5), "dict")

@@ -24,15 +24,15 @@ def fake_text():
 
 def main():
     pp = pprint.PrettyPrinter(indent=4)
-    text = parse.get_text("https://en.wikipedia.org/wiki/Pierogi")
+   #  text = parse.get_text("https://en.wikipedia.org/wiki/Pierogi")
     # pp.pprint(text)
 
     # Text is a 2D list. Outerlist is sentences, inner list is words within sentence
     # text = fake_text()   # Insert Dylan's function here
 
     # Temporary
-    dict_list = markov.list_to_markov(text, 1)
-    write(dict_list, "test")
+   # dict_list = markov.list_to_markov(text, 3)
+   # write(dict_list, "test")
 
     # Continue testing
     feed()
