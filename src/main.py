@@ -2,6 +2,7 @@ import list_to_markov as markov
 import pprint
 import parse
 from to_json import write
+from feed_carl import feed
 
 
 # Delete
@@ -31,8 +32,10 @@ def main():
 
     # Temporary
     dict_list = markov.list_to_markov(text, 1)
-    write(dict_list)
+    write(dict_list, "test")
 
+    # Continue testing
+    feed()
 
 if __name__ == "__main__":
     main()

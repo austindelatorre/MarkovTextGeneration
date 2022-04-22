@@ -5,6 +5,10 @@ import to_json as json
 #Loops through the links in "carl_urls" txt file and writes their prob_dicts to our json file
 
 def feed():
-    with open("carl_urls.txt", "r") as file:
+    with open("urls.txt", "r") as file:
+        text =
         for line in file:
-            json.write(markov.list_to_markov(parse.get_text(line), 2))
+            text.append(parse.get_text(line))
+           #  json.write(markov.list_to_markov(parse.get_text(line), 2))
+        print(text)
+        json.write(markov.list_to_markov(text, 2))

@@ -7,7 +7,7 @@ console.log(typeof "my string");
 
 console.log(rand_outcome(data["great"]))
 
-console.log(gen_n_words_constant_keysize(data, "the", 3))
+console.log(gen_n_words_constant_keysize(data, "the", 7))
 /* data is dictionary of arrays of arrays
 * seed_key starts the generation
 * n_words are generated
@@ -15,8 +15,7 @@ console.log(gen_n_words_constant_keysize(data, "the", 3))
  */
 function gen_n_words_constant_keysize(data, seed_key, n_words)
 {
-
-    let result = new Array(n_words);
+    let result = [];
 
     for (let i = 0; i < n_words; i++)
     {
@@ -24,9 +23,13 @@ function gen_n_words_constant_keysize(data, seed_key, n_words)
         {
             seed_key = result[i-1];
         }
-        let outcome = rand_outcome(data[seed_key]);
 
-        result[i] = outcome;
+        if (!(seed_key in data))
+        {
+            return result;
+        }
+
+        result.push(rand_outcome(data[seed_key]));
     }
     return result;
 }
