@@ -1,16 +1,18 @@
-import {json_to_js} from "./json_to_js";
+// import {json_to_js} from "./tools";
 
-let data = json_to_js("dict.json");
-console.log(predict_words(data, "my", 10, true, 5))
+let tools = require('./tools');
+
+let data = tools.json_to_js("dict.json");
+console.log(predict_text(data, "my", 10, false, 5))
 
 /* data is dictionary of arrays of arrays
 * seed_key starts the generation
-* n_words are generated
+* n words are generated
 * keysize (and therefore dataset 'data') is constant. (The alternative is to use a growing keysize)
 * constant_key_size is bool; false is growing key size
 * key will grow up until it has reached a key size of max_key_size
  */
-function predict_words(data, seed_key, n, constant_key_size, max_key_size) {
+function predict_text(data, seed_key, n, constant_key_size, max_key_size) {
     let result = [];
 
     for (let i = 0; i < n; i++) {

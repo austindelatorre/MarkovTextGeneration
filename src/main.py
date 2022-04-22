@@ -5,23 +5,6 @@ from to_json import write
 from feed_carl import feed
 
 
-# Delete
-def fake_text():
-    text = [["Hello", "here", "was", "text"],
-            ["Hello", "here", "was", "text"],
-            ["here", "is", "the", "text"],
-            ["the", "bird", "is", "nice"],
-            ["the", "bird", "is", "nice"],
-            ["Here", "was", "the", "bird", "which", "is", "very", "nice"],
-            ["Here", "is", "my", "bird", "which", "was", "very", "nice"],
-            ["Here", "is", "the", "bird", "which", "was", "very", "nice"],
-            ["Here", "is", "my", "dog", "which", "is", "nice,", "and", "I", "like", "it"]
-
-            ]
-
-    return text
-
-
 def main():
     pp = pprint.PrettyPrinter(indent=4)
    #  text = parse.get_text("https://en.wikipedia.org/wiki/Pierogi")
