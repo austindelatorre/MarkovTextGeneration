@@ -8,7 +8,7 @@ Just some boys tying to make a mediocre auto text completion software using the 
 - Make sure current directory is src
 - run ```python main.py``` to generate dictionary "dict.json" (currently 1 to 5 degrees) for the urls in "urls.txt"
 - run ```node json_to_js.js``` to test text prediction with dictionary "dict.json"
-  - Need to use the function ```predict_words``` in react part of application 
+  - Need to use the function ```predict_words(...)``` in react part of application 
 
 
 ## Using this Repository
