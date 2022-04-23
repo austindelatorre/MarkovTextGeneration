@@ -3,7 +3,7 @@
 let tools = require('./tools');
 
 let data = tools.json_to_js("dict.json");
-console.log(predict_text(data, "my", 10, false, 5))
+console.log(predict_text(data, "my", 4, false, 5))
 
 /* data is dictionary of arrays of arrays
 * seed_key starts the generation
@@ -17,7 +17,7 @@ function predict_text(data, seed_key, n, constant_key_size, max_key_size) {
 
     for (let i = 0; i < n; i++) {
         if (i !== 0) {
-            if (constant_key_size !== true){
+            if (constant_key_size === false){
                 let lower_index = Math.max(0, i - max_key_size); // will not go back into negative indices
                 let result_slice = result.slice(lower_index, i + 1); // not sure about +1
                 seed_key = result_slice.join(' ');
