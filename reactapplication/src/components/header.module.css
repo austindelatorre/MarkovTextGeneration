@@ -14,5 +14,6 @@
 
     
     border-bottom: 1px solid #dbdbdb;
-    background-color: #fff;
+    background-image: linear-gradient(45deg, rgb(229, 151, 253), rgb(197, 5, 255));
 }
+/*90deg, rgb(215, 86, 255), rgb(197, 5, 255)*/
