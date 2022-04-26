@@ -19,7 +19,7 @@ C.A.R.L. is a probabilistic text generator, meaning that he relies on a large da
 #### 3. Predicting and Suggesting Text
 C.A.R.L. uses React.js for its UI. Therefore for ease of use, we have javascript look-up functions which utilize ```dict.json``` to generate sentences of many words (```predict_text```) or a single word (```suggest_text```). The React application uses these functions to look up words to display to to the user.
 
-About ```predict_text(data, seed_key, n, constant_key_size, max_key_size)```
+About ```predict_text(seed_key, n, constant_key_size, max_key_size)```
 - Takes **seed_key** as the inital key and then generates multiple words (usually) based on the the previous **n** words (including words that predict_text generated itself)
 - Paramaters: 
   - **data**: the re-parsed json file back into the dictionary of arrays of arrays
