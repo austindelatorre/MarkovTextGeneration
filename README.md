@@ -33,7 +33,7 @@ About ```suggest_text(data, seed_key, n)```
 - Parameters:
   - **data**: the re-parsed json file back into the dictionary of arrays of arrays
   - **seed_key**: seed_key is the first word (or phrase) that is used to begin text generation
-  - **n**: number of words to predict in total
+  - **n**: number of words to list for suggestion
 
 #### 4. UI
 A React application where the user can type in a text box and the application will suggest following words for a user (in order of probability) or be set to produce an entire phrase based on words the user has type
