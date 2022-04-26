@@ -22,16 +22,14 @@ C.A.R.L. uses React.js for its UI. Therefore for ease of use, we have javascript
 About ```predict_text(seed_key, n, constant_key_size, max_key_size)```
 - Takes **seed_key** as the inital key and then generates multiple words (usually) based on the the previous **n** words (including words that predict_text generated itself)
 - Paramaters: 
-  - **data**: the re-parsed json file back into the dictionary of arrays of arrays
   - **seed_key**: seed_key is the first word (or phrase) that is used to begin text generation
   - **n**: number of words to predict in total
   - **constant_key_size**: True if key is always 1 word , false if key grows by adding words it has predicted
   - **max_key_size**: Should be set to max degree of dictionary. In case of growing key size, key size will not exceed this value
   
-About ```suggest_text(data, seed_key, n)```
+About ```suggest_text(seed_key, n)```
 - Returns the top **n** most probabily words to follow the phrase **seed_key**
 - Parameters:
-  - **data**: the re-parsed json file back into the dictionary of arrays of arrays
   - **seed_key**: seed_key is the first word (or phrase) that is used to begin text generation
   - **n**: number of words to list for suggestion
 
