@@ -1,7 +1,5 @@
-
-
 // returns (an array) top n suggested words (based on probability) based on a seed_key phrase (can be up to 5 words)
-export default function suggest_text(seed_key, n)
+export function suggest_text(seed_key, n)
 {
     let tools = require('./tools');
 
