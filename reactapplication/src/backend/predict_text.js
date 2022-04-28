@@ -1,9 +1,5 @@
 // import {json_to_js} from "./tools";
 
-let tools = require('./tools');
-
-let data = tools.json_to_js("dict.json");
-console.log(predict_text("my", 4, false, 5))
 
 /* data is dictionary of arrays of arrays
 * seed_key starts the generation
@@ -15,6 +11,10 @@ console.log(predict_text("my", 4, false, 5))
 export default function predict_text(seed_key, n, constant_key_size, max_key_size) {
     let result = [];
 
+    let tools = require('./tools');
+
+    let data = tools.json_to_js("dict.json");
+    console.log(predict_text("my", 4, false, 5))
     for (let i = 0; i < n; i++) {
         if (i !== 0) {
             if (constant_key_size === false){

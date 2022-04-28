@@ -17,7 +17,8 @@ export default function Textbox()
         if (input.endsWith(' '))
         {
             console.log("THIS IS WERE WE AUTO SUGGEST THE PREVIOUS VALUE")
-            const seed_key = (input - " ");
+            console.log("INPUT WITHOUT THE SPACE?", input.trim());
+            const seed_key = (input.trimEnd());
             console.log("TEST SUGGESTION", suggest_text(seed_key, 10))
         }
     }
