@@ -4,10 +4,10 @@ import Header from "./components/header.js";
 import About from "./components/about.js"
 import Footer from "./components/footer.js"
 import css from "./App.module.css";
-import dict from "./backend/carl.json";
+import dict from "./backend/dict.json";
 
 function App() {
-  const data = JSON.parse(dict);
+  const data = JSON.parse(JSON.stringify(dict));
   return (
     <div className = {css.container}>
       <Header/>
