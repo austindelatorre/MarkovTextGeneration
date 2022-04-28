@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {suggest_text} from "../backend/suggest_text.js"
 import css from "./textbox.module.css"
 
-export default function Textbox() 
+export default function Textbox(props) 
 {
-    
+    const {data} = props;
     //read the input from textarea
     //read for a space between words
     //take the value of the text and console.log it
@@ -19,7 +19,7 @@ export default function Textbox()
             console.log("THIS IS WERE WE AUTO SUGGEST THE PREVIOUS VALUE")
             console.log("INPUT WITHOUT THE SPACE?", input.trim());
             const seed_key = (input.trimEnd());
-            console.log("TEST SUGGESTION", suggest_text(seed_key, 10))
+            console.log("TEST SUGGESTION", suggest_text(data, seed_key, 10))
         }
     }
     
