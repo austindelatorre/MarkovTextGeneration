@@ -21,7 +21,7 @@ export default function Textbox(props)
     function findWords(a) {
         if (lastWord === null)
             {
-                const seed_key = (a.trimEnd());
+                const seed_key = (a.trimEnd().toLowerCase());
                 suggestions = suggest_text(data, seed_key, 10);
             }
             else if (a.substring(lastWord.length) !== " ")
@@ -29,9 +29,8 @@ export default function Textbox(props)
                 console.log("SUBSTRING", a.substring(lastWord.length));
                 let trimmedInput = a.substring(lastWord.length);
                 console.log("TRIMMEDINPUT", trimmedInput.trim());
-                const seed_key = (trimmedInput.trim());
+                const seed_key = (trimmedInput.trim().toLowerCase());
                 suggestions = suggest_text(data, seed_key, 10);
-
             }
             lastWord = input.trim();
     }
