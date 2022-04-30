@@ -54,7 +54,7 @@ export default function Textbox(props)
     
 
     const onClick = (e) => {
-        setInput(e.target.innerText);
+        setInput(input + e.target.innerText);
         setActiveSuggestionIndex(0);
         setShowSuggestions(false);
       };
@@ -70,7 +70,7 @@ export default function Textbox(props)
               }
               return (
                 <li className={className} key={suggestion} onClick={onClick}>
-                  {suggestion}
+                  {suggestion[0]}
                 </li>
               );
             })}
