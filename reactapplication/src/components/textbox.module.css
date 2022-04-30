@@ -31,7 +31,7 @@
 }
 
 .noSuggestions {
-  color: #999;
+  color: red;
   padding: 0.5rem;
 }
 .suggestions {
