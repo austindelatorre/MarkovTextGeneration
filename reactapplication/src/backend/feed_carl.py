@@ -13,7 +13,7 @@ def feed():
             new_text = strict_parse.get_text(line)
             text += new_text
            #  json.write(markov.list_to_markov(parse.get_text(line), 2))
-        json.write(markov.list_to_markov(text, 5), "dict")
+        json.write(markov.list_to_markov(text, 3), "dict")
 
 if __name__ == "__main__":
     feed()
