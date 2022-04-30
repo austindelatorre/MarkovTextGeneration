@@ -4,7 +4,7 @@ import Header from "./components/header.js";
 import About from "./components/about.js"
 import Footer from "./components/footer.js"
 import css from "./App.module.css";
-import dict from "./backend/dict.json";
+import dict from "./backend/carl.json";
 
 function App() {
   const data = JSON.parse(JSON.stringify(dict));
