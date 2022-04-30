@@ -10,10 +10,14 @@ def feed():
         text = []
         for line in url_file:
             line = line.rstrip('\r\n')
+            print("*** Eating from: ", line)
             new_text = strict_parse.get_text(line)
             text += new_text
-           #  json.write(markov.list_to_markov(parse.get_text(line), 2))
+        
+        print("*** Done Eating. Digesting into probibility JASON.")
         json.write(markov.list_to_markov(text, 3), "dict")
+
+        print("CARL IS FED")
 
 if __name__ == "__main__":
     feed()
