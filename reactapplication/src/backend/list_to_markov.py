@@ -7,7 +7,6 @@
 # Returns a dictionary of list of tuples  (sorted by frequency):
 # { key (phrase of degree words) :  [ (next_word1, prob1) , (next_word2, prob2), ...}}
 def list_to_markov(text, degree):
-
     # Builds nested dictionary of probabilities for 1 to degree_words
     prob_dict = {}
     for k in range(1, degree + 1):
@@ -24,14 +23,13 @@ def list_to_markov(text, degree):
 
 
 # Converts freq_dict into prob dic
-def freq_to_prob(dict):
-    for phrase in dict:
-        total = count_next_word_freq(dict[phrase])
+def freq_to_prob(dictionary):
+    for phrase in dictionary:
+        total = count_next_word_freq(dictionary[phrase])
+        for next_word in dictionary[phrase]:
+            dictionary[phrase][next_word] = round(dictionary[phrase][next_word] / total, 6)
 
-        for next_word in dict[phrase]:
-            dict[phrase][next_word] = dict[phrase][next_word] / total
-
-    return dict
+    return dictionary
 
 
 # Sums all frequencies of next_words for a given dictionary associated with a phrase
@@ -63,10 +61,8 @@ def build_freq_dict(text, degree):
 
 # if key exits then adds value to a list of values for that key; otherwise creates a new entry
 def update_dict(freq_dict, phrase, next_word):
-
     # If phrase is already in dict
     if phrase in freq_dict:
-
         # next_word is already in next_words dict
         if next_word in freq_dict[phrase]:
             freq = freq_dict[phrase][next_word] + 1
