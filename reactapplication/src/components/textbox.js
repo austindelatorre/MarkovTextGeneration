@@ -38,7 +38,7 @@ export default function Textbox(props)
     
 
     console.log("INPUT VALUE", input);
-    if (input.endsWith(' '))
+    if (input.endsWith(' ')) //
     {
         //console.log("THIS IS WERE WE AUTO SUGGEST THE PREVIOUS VALUE")
         //console.log("INPUT WITHOUT THE SPACE?", input.trim());
@@ -61,12 +61,12 @@ export default function Textbox(props)
 
     const AutoSuggestionList = () => {
         return suggestions.length ? (
-          <ul class="suggestions">
+          <ul className={css.suggestions}>
             {suggestions.map((suggestion, index) => {
               let className;
               // Flag the active suggestion with a class
               if (index === activeSuggestionIndex) {
-                className = "suggestion-active";
+                className = css.suggestionActive;
               }
               return (
                 <li className={className} key={suggestion} onClick={onClick}>
@@ -76,7 +76,7 @@ export default function Textbox(props)
             })}
           </ul>
         ) : (
-          <div class="no-suggestions">
+          <div class={css.noSuggestions}>
             <em>Type a word and press space first!</em>
           </div>
         );
@@ -86,7 +86,7 @@ export default function Textbox(props)
         <div className = {css.content}>
             <form autoComplete = "off">
                 <div className = {css.autocomplete}>
-                    <textarea type="text" placeholder="Type a word and press space for a suggestion" id="carlInput" value={input} onChange={onChange} onClick={onClick}/>
+                    <textarea type="text" placeholder="Type a word and press space for a suggestion" id="carlInput" value={input} onChange={onChange}/>
                     {showSuggestions && lastWord && <AutoSuggestionList />}
                 </div>
             </form>
