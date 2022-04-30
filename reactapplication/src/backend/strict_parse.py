@@ -9,7 +9,7 @@ def get_text(url):
     soup = BeautifulSoup(html, 'html.parser')
     paragraphs = soup.findAll('p')
     for paragraph in paragraphs:
-        sentences = re.findall(r'[A-Z][a-z\s,]{10,300}[.|!|?]', paragraph.text)
+        sentences = re.findall(r'[A-Z][a-z\s,;""''()]{10,300}[.|!|?]', paragraph.text)
         for element in sentences:
             temp = element.replace(".", "").lower()
             text_matrix.append(temp.split())
