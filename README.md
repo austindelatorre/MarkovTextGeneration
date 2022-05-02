@@ -19,6 +19,7 @@ C.A.R.L. is a probabilistic text generator, meaning that he relies on a large da
   - This allows C.A.R.L. to have greater context when looking up a word that would follow a longer sentence segment.
 - All of the probability dicionaries are joined together and then dumped into a json file ```dict.json```.
 
+![plot](diagrams/prob_dict.PNG)
 
 #### 3. Predicting and Suggesting Text
 C.A.R.L. uses React.js for its UI. For ease of use, we have javascript look-up functions which utilize ```dict.json``` to generate sentences of many words (```predict_text```) or a single word (```suggest_text```). The React application uses these functions to look up words to display to the user.
@@ -43,8 +44,7 @@ A React application where the user can type in a text box and the application wi
 - Uses the look-up functions ```predict_text``` and ```suggest_text```
 
 
-## Visual Aids
-![plot](diagrams/prob_dict.PNG)
+## Visual Overview
 ![plot](diagrams/flow_diagram.png)
 
 ## Current Testing Usage
