@@ -16,7 +16,7 @@ def get_text(url):
         search = re.sub(r"[;]", ".", search) 
         sentences = re.findall(r'[A-Z][A-Za-z\s,;\"\'-]{20,200}[.|!|?]', search)
         for element in sentences:
-            temp = re.sub(r"[.!?]", "", element) 
+            temp = re.sub(r"[.?!\'\";-]", "", element) 
             temp = temp.lower()
             accept += len(temp.split())
             text_matrix.append(temp.split())
