@@ -21,7 +21,8 @@ def feed():
             text += new_text
         
         print("*** Done Eating. Digesting into probibility JSON.")
-        json.write(markov.list_to_markov(text, 4), "dict")
+        data = markov.list_to_markov(text, 4)
+        json.write(data, "dict")
 
         print("CARL IS FED")
         file_size = os.path.getsize('dict.json')
