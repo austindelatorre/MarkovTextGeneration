@@ -32,7 +32,7 @@ About ```predict_text(seed_key, n, constant_key_size, max_key_size)```
   - **max_key_size**: Should be set to max degree of dictionary. In case of growing key size, key size will not exceed this value
   
 About ```suggest_text(seed_key, n)```
-- Returns the top **n** most probabily words to follow the phrase **seed_key**
+- Returns the top **n** most probable words to follow the phrase **seed_key**
 - Parameters:
   - **seed_key**: seed_key is the first word (or phrase) that is used to begin text generation
   - **n**: number of words to list for suggestion
@@ -42,6 +42,10 @@ About ```suggest_text(seed_key, n)```
 A React application where the user can type in a text box and the application will suggest following words for a user (in order of probability) or be set to produce an entire phrase based on words the user has type
 - Uses the look-up functions ```predict_text``` and ```suggest_text```
 
+
+## Visual Aids
+![plot](diagrams/prob_dict.PNG)
+![plot](diagrams/flow_diagram.PNG)
 
 ## Current Testing Usage
 
