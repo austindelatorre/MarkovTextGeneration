@@ -5,5 +5,10 @@ export function suggest_text(data, seed_key, n)
 
     // let data = tools.json_to_js("dict.json");
     let following_words = data[seed_key];
+    
+    if (following_words === undefined){
+        return null; 
+    }
+
     return following_words.slice(0,n);
 }

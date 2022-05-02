@@ -5,5 +5,3 @@ module.exports = {
         return JSON.parse(json_data);
     }
 }
-
-
