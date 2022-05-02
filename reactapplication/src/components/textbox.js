@@ -125,8 +125,9 @@ export default function Textbox(props)
         console.log("inside predictText textbox function");
         setPredictClicked(false); //return toggle to false
 
-        let prediction = null;
+        let prediction;
         let wordsPredicted = 0;
+        let total_predictions = [];
 
         while (wordsPredicted < 3 && prediction !== null) {
             console.log("Abuot to predict here is words", words, " | type of words", typeof(words));
@@ -135,15 +136,20 @@ export default function Textbox(props)
             console.log("just made prediction =", prediction);
             if (prediction !== null) // if we have a valid prediction push to words and input
             {
-                setInput(input + prediction + " ");
+
                 setLastWordIter(iter); // not sure
                 setIter(iter + prediction.length + 1);
+
+                total_predictions.push(prediction);
 
                 words.push(prediction);
                 setWords(words);
             }
             wordsPredicted++;
         }
+
+        let newInput = input + total_predictions.join(" ");
+        setInput(newInput);
     }
 
     function addToInput(text){
