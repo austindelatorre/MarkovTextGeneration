@@ -45,7 +45,7 @@ A React application where the user can type in a text box and the application wi
 
 ## Visual Aids
 ![plot](diagrams/prob_dict.PNG)
-![plot](diagrams/flow_diagram.PNG)
+![plot](diagrams/flow_diagram.png)
 
 ## Current Testing Usage
 
