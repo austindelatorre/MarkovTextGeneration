@@ -244,10 +244,10 @@ export default function Textbox(props)
                     {showSuggestions && <AutoSuggestionList />}
                 </div>
             </form>
+            {predictOn === true ? 
             <button className={css.button} onClick={onPredict}>
                 Predict 3 words
-            </button>
-
+            </button> : null}
         </div>
     );
 }

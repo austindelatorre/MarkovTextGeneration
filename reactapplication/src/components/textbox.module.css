@@ -1,5 +1,4 @@
 .autocomplete textarea {
-    margin-top: 50px;
     height: 100px;
     box-sizing: content-box;
     width: 100%;
@@ -9,6 +8,8 @@
     font:inherit;
     padding: 0;
     resize: none;
+    margin-top: -10px; 
+    margin-bottom: -10px;
 }
 
 .autocomplete {
@@ -58,14 +59,22 @@
   font-weight: 700;
 }
 .suggestions li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #d4d4d4;
 }
 
 .button{
-    align-content: space-evenly;
-    width: 50%;
+    width: 20%;
+    left: 0;
+    margin-left: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    text-decoration: none;
 }
 
-.content{
-
+.button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
