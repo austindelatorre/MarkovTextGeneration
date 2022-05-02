@@ -10,7 +10,6 @@ import sys
 def feed():
     url_path = "urls.txt"
     name = "dict.json"
-
     print("Creating file: ", name)
     print("Using URLs form: ", url_path)
     with open(url_path, "r") as url_file:
@@ -22,7 +21,7 @@ def feed():
             text += new_text
         
         print("*** Done Eating. Digesting into probibility JSON.")
-        json.write(markov.list_to_markov(text, 3), "dict")
+        json.write(markov.list_to_markov(text, 4), "dict")
 
         print("CARL IS FED")
         file_size = os.path.getsize('dict.json')
