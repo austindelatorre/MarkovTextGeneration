@@ -38,14 +38,17 @@ export default function predict_text(data, seed_key, n, constant_key_size, max_k
 }
 */
 
-function predict_text2(data, words, max_key_size) {
+export default function predict_text2(data, words, max_key_size) {
     let prediction = null;
     let mega_seed_key;
     let j = -1 * max_key_size;
 
-    while (prediction == null && j !== 0) {
-        mega_seed_key = words[j].join(' ');
+    while (prediction == null && j < 0) {
+        console.log("inside predicttext 2, here is words", words);
+        console.log("join test", words.join(" "));
+        mega_seed_key = words.slice(j).join(' ');
         prediction = rand_outcome(data[mega_seed_key]);
+        console.log("just got prediction", prediction);
         j++;
     }
 
@@ -58,6 +61,10 @@ function predict_text2(data, words, max_key_size) {
 //  creates a random variable with values and probabilites of a give array and then returns an outcome
 // arr = [[word1, prob1], [word2, prob2],...]
 function rand_outcome(arr) {
+    if (arr === undefined)
+    {
+        return null;
+    }
     const rand_dec= Math.random();
     let sum = 0;
 
