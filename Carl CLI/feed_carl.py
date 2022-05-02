@@ -8,12 +8,8 @@ import sys
 #Loops through the links in "urls" txt file and writes their prob_dicts to our json file
 
 def feed():
-    if len(sys.argv) == 1:
-        url_path = "urls.txt"
-        name = "dict.json"
-    else:
-        url_path = sys.argv[1]
-        name = sys.argv[2]
+    url_path = "urls.txt"
+    name = "dict.json"
 
     print("Creating file: ", name)
     print("Using URLs form: ", url_path)
