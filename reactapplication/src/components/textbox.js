@@ -1,22 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {suggest_text} from "../backend/suggest_text.js"
 import css from "./textbox.module.css"
-import {flushSync} from "react-dom";
-import useForceUpdate from 'use-force-update';
 
-//storing the previous input to subtract from input so search only using the current word
-//var lastWord = null;
-//var words = [];
-//var lastLastWord = null;
-
-//output of suggest text
-var suggestions;
-//var trimmedInput = null;
-//var k = 0;
-var i = 0; // keeps track of if we are adding or deleting characters in a
-//var changeMade = false;
-
-
+let suggestions = null;
 
 export default function Textbox(props) 
 {
@@ -26,149 +12,99 @@ export default function Textbox(props)
     
     const [input, setInput] = useState('');
     const [words, setWords] = useState([]);
+
+    // keeps track of what char we have accounted for. Used to see whether there is new input
     const [iter, setIter] = useState(0);
+
+    // keeps track of the start index of the word that is about to be pushed. Bad name, fix
     const [lastWordIter, setLastWordIter] = useState(0);
 
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
     const [showSuggestions, setShowSuggestions] = useState(false);
-    console.log("INPUT TEST", input);
-
-
-   // findWords(input)
 
     useEffect(() => {
         console.log("re-render because input changed:", input);
 
         if (iter !== input.length)
         {
-            console.log("Inside iter !== input.length")
             findWords(input);
         }
-
     } );
 
 
     //searching for suggestions
     function findWords(a) {
 
-        console.log("a = |", a, "|");
-        console.log("a ends with space", a.endsWith(" "));
+        // Must set to false by default (with each change)
+        setShowSuggestions(false);
 
-        if( a.length >= iter) // we have added a character
+        // we have added a character
+        if( a.length >= iter)
         {
-            console.log("iter", iter);
-            setIter((iter + 1));
-            i++;
+
+            let newIter = iter + 1;
+            setIter(newIter);
+
             if (a.endsWith(" "))
             {
-                console.log("a.length > i and a ends with space");
+
                 // gets the word from the end of the previous gotten word
-                const seed_key  = (a.substring(lastWordIter).trim().toLowerCase());
-                console.log("About to push seedkey to words: ", seed_key, " | lastWordIter = ", lastWordIter);
+                //seed_key_raw is untrimmed seed_key
+                const seed_key_raw = a.substring(lastWordIter).toLowerCase();
 
-                // adds seed_key to words list
-                words.push(seed_key);
-                setWords(words);
+                // this is what we push to words
+                const seed_key = seed_key_raw.trim();
 
-                console.log("Just pushed", seed_key, " to words");
-                setLastWordIter((lastWordIter + seed_key.length + 1)); // updates k to be start of next word (+1 for space)
-                console.log("Last word iter", lastWordIter);
+                if (seed_key !== "")// don't push space seed_key to words
+                {
+                    console.log("About to push seedkeyraw.trim() to words: ", seed_key, " | lastWordIter = ", lastWordIter);
 
-                suggestions = suggest_text(data, seed_key, 10);
-                setShowSuggestions(true);
+                    // adds seed_key to words list
+                    words.push(seed_key);
+                    setWords(words);
+
+                    // updates lastWordIter to be start of next word (+1 for space)
+                    setLastWordIter((lastWordIter + seed_key_raw.length));
+                    console.log("Last word iter", lastWordIter);
+
+                    // takes up to the most recent 3 words
+                    let j = -3;
+                    let mega_seed_key;
+
+                    // decreases mega_key_size while no suggestions available
+                    suggestions = null;
+                    while (suggestions == null &&  j !== 0)
+                    {
+                        mega_seed_key = words.slice(j).join(" ");
+                        suggestions = suggest_text(data, mega_seed_key, 10);
+                        j++;
+                    }
+                    setShowSuggestions(true);
+                }
             }
-
         }
         else // a.length < i , we have deleted a character
         {
             setIter(iter - 1);
-            i--
             if(a.endsWith(" ")) // We have deleted a full word
             {
                 // Maybe frowned upon to directly mutate words
                 let deletedWord = words.pop();
                 setWords(words);
 
-                setLastWordIter(lastWordIter - (deletedWord.length + 1)); // k is set to start of new previous word
-
+                setLastWordIter(lastWordIter - (deletedWord.length + 1)); // lastWordIter is set to start of new previous word
             }
 
         }
-
-        console.log("findswords called");
-      // there is already a word, you only want to search using the current word. But first check and make sure we don't have a space
-       /*
-        if (a.endsWith(" "))//a.substring(lastWord.length) !== " "
-        {    
-            const seed_key  = (a.substring(k).trim().toLowerCase())
-            console.log("SUBSTRING", seed_key);
-            words.push(seed_key);
-            console.log("Just pushed", seed_key, " to words");
-            if (k === 0) 
-            {
-                k += seed_key.length;
-            }
-            else  
-            {
-                k += seed_key.length + 1;
-            }
-            console.log("k", k);
-           /*  console.log("SUBSTRING", a.substring(lastWord.length));
-            let trimmedInput = a.substring(lastWord.length);
-            console.log("TRIMMEDINPUT", trimmedInput.trim());
-            const seed_key = (trimmedInput.trim().toLowerCase());
-            suggestions = suggest_text(data, seed_key, 10);
-            setShowSuggestions(true);
-        }
-        if (a.length < k )
-        {
-            console.log("Inside a.length < k")
-            console.log("words is ",words );
-            let deletedWord = words[words.length -1];
-            console.log("deletedWord", deletedWord);
-            words.pop();
-            console.log("deletedword length = ", deletedWord.length);
-            k -= deletedWord.length + 1;
-            setShowSuggestions(true);
-        }
-
-        */
-        console.log("words = ", words)
-        console.log("At end of find words; k=", lastWordIter, " | a.length = ", a.length, "| iter = ", iter, "| i = ", i);
-
-        //else if (a !== (" "))
-        //{
-            //setShowSuggestions(false);
-        //}
-        //lastWord = input.trim();
-        // console.log("LAST WORD", lastWord);
     }
 
-    //findWords(input);
-
-    //calling fing words based on word end
-    console.log("INPUT VALUE", input);
-    /*if (input.endsWith(' ')) //
-    {
-        //console.log("THIS IS WERE WE AUTO SUGGEST THE PREVIOUS VALUE")
-        //console.log("INPUT WITHOUT THE SPACE?", input.trim());
-        findWords(input);
-        console.log("suggesions", suggestions);
-    }*/
-
-    
     //get characters
     const onChange = (e) => {
         console.log("On change; e.target.value=",e.target.value);
         let newInput = e.target.value;
         setInput(newInput);
 
-
-        console.log("INPUT inside on Change ", input );
         setActiveSuggestionIndex(0);
-        //findWords(input);
-
-
       };
     
 
@@ -178,6 +114,8 @@ export default function Textbox(props)
         setShowSuggestions(false);
       };
 
+
+    // Delete??
     const onSpace = (e) => {
       /*  if (e.keyCode === 32)
         {
@@ -204,7 +142,7 @@ export default function Textbox(props)
             </ul>
             ) : (
             <div class={css.noSuggestions}>
-                <em>Type a word and press space first!</em>
+                <em>No suggestion available. Type a word and press space first!</em>
             </div>
             );
         }
