@@ -9,13 +9,12 @@
 * key will grow up until it has reached a key size of max_key_size
  */
 
-/*
-export default function predict_text(data, seed_key, n, constant_key_size, max_key_size) {
+function predict_text(data, seed_key, n, constant_key_size, max_key_size) {
     let result = [];
 
     // let tools = require('./tools');
 
-  //   let data = tools.json_to_js("dict.json");
+    // let data = tools.json_to_js("dict.json");
     for (let i = 0; i < n; i++) {
         if (i !== 0) {
             if (constant_key_size === false){
@@ -36,7 +35,7 @@ export default function predict_text(data, seed_key, n, constant_key_size, max_k
     }
     return result;
 }
-*/
+
 
 export default function predict_text2(data, words, max_key_size) {
     let prediction = null;
@@ -44,7 +43,7 @@ export default function predict_text2(data, words, max_key_size) {
     let j = -1 * max_key_size;
 
     while (prediction == null && j < 0) {
-        console.log("inside predicttext 2, here is words", words);
+        console.log("inside predict text 2, here is words", words);
         console.log("join test", words.join(" "));
         mega_seed_key = words.slice(j).join(' ');
         prediction = rand_outcome(data[mega_seed_key]);
@@ -54,8 +53,6 @@ export default function predict_text2(data, words, max_key_size) {
 
     return prediction;
 }
-
-
 
 
 //  creates a random variable with values and probabilites of a give array and then returns an outcome

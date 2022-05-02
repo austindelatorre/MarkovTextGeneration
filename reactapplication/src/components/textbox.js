@@ -33,6 +33,14 @@ export default function Textbox(props)
         console.log("re-render because input changed:", input);
         console.log("here is words", words);
 
+        console.log("last word iter", lastWordIter);
+        console.log("iter", iter);
+        if( iter === 0 && words.length !== 0) //safety check
+        {
+            setWords([]);
+            setLastWordIter(0);
+        }
+
         if (iter !== input.length)
         {
             findWords(input);
@@ -136,10 +144,6 @@ export default function Textbox(props)
             console.log("just made prediction =", prediction);
             if (prediction !== null) // if we have a valid prediction push to words and input
             {
-
-                setLastWordIter(iter); // not sure
-                setIter(iter + prediction.length + 1);
-
                 total_predictions.push(prediction);
 
                 words.push(prediction);
@@ -148,13 +152,15 @@ export default function Textbox(props)
             wordsPredicted++;
         }
 
-        let newInput = input + total_predictions.join(" ");
-        setInput(newInput);
+        if (total_predictions.length !== 0){ // if we have predictions
+            setLastWordIter(iter + (total_predictions.slice(0).join(" ")).length - total_predictions[total_predictions.length-1].length);
+            setIter(iter + (total_predictions.join(" ")).length);
+
+            let newInput = input + total_predictions.join(" ");
+            setInput(newInput);
+        }
     }
 
-    function addToInput(text){
-        setInput(input + text + " ");
-    }
 
     //get characters
     const onChange = (e) => {
