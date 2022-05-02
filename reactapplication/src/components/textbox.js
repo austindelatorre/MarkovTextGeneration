@@ -31,10 +31,17 @@ export default function Textbox(props)
 
     useEffect(() => {
         console.log("re-render because input changed:", input);
+        console.log("here is words", words);
 
         if (iter !== input.length)
         {
             findWords(input);
+        }
+        if (input.endsWith(" ") && predictOn === true && predictClicked === true)
+        {
+            setPredictClicked(false);
+            predictText();
+
         }
     } );
 
@@ -46,7 +53,7 @@ export default function Textbox(props)
         setShowSuggestions(false);
 
 
-
+        console.log("predict Clicked = ", predictClicked);
         // we have added a character
         if( a.length >= iter)
         {
@@ -95,29 +102,6 @@ export default function Textbox(props)
                         }
                         setShowSuggestions(true);
                     }
-                    else if (predictOn === true && predictClicked === true) // Predict Text
-                    {
-                        setPredictClicked(false); //return toggle to false
-
-                        let prediction = null;
-                        let wordsPredicted = 0;
-
-                        while (wordsPredicted < 3 || prediction !== null)
-                        {
-                            prediction = predict_text2(data, words, 3);
-                            if (prediction !== null) // if we have a valid prediction push to words and input
-                            {
-                                setInput(input + prediction + " ");
-                                setLastWordIter(iter); // not sure
-                                setIter(iter + prediction.length + 1);
-
-                                words.push(prediction);
-                                setWords(words);
-                            }
-                            wordsPredicted++;
-                        }
-                    }
-
 
                 }
             }
@@ -137,6 +121,30 @@ export default function Textbox(props)
         }
     }
 
+    function predictText(){
+        console.log("inside predictText textbox function");
+        setPredictClicked(false); //return toggle to false
+
+        let prediction = null;
+        let wordsPredicted = 0;
+
+        while (wordsPredicted < 3 && prediction !== null) {
+            console.log("Abuot to predict here is words", words, " | type of words", typeof(words));
+            prediction = predict_text2(data, words, 3);
+
+            console.log("just made prediction =", prediction);
+            if (prediction !== null) // if we have a valid prediction push to words and input
+            {
+                setInput(input + prediction + " ");
+                setLastWordIter(iter); // not sure
+                setIter(iter + prediction.length + 1);
+
+                words.push(prediction);
+                setWords(words);
+            }
+            wordsPredicted++;
+        }
+    }
 
     function addToInput(text){
         setInput(input + text + " ");
@@ -194,11 +202,13 @@ export default function Textbox(props)
 
 
     const onToggle = () =>{
+
         if(predictOn === true){
             setModeText('Suggesting Text. Click to Predict Text');
         }
         else
         {
+            console.log("set to predict text")
             setModeText('Predicting Text. Click to Suggest Text');
         }
 
