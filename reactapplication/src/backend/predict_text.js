@@ -8,13 +8,14 @@
 * constant_key_size is bool; false is growing key size
 * key will grow up until it has reached a key size of max_key_size
  */
+
+/*
 export default function predict_text(data, seed_key, n, constant_key_size, max_key_size) {
     let result = [];
 
     // let tools = require('./tools');
 
   //   let data = tools.json_to_js("dict.json");
-    console.log(predict_text("my", 4, false, 5))
     for (let i = 0; i < n; i++) {
         if (i !== 0) {
             if (constant_key_size === false){
@@ -35,6 +36,22 @@ export default function predict_text(data, seed_key, n, constant_key_size, max_k
     }
     return result;
 }
+*/
+
+function predict_text2(data, words, max_key_size) {
+    let prediction = null;
+    let mega_seed_key;
+    let j = -1 * max_key_size;
+
+    while (prediction == null && j !== 0) {
+        mega_seed_key = words[j].join(' ');
+        prediction = rand_outcome(data[mega_seed_key]);
+        j++;
+    }
+
+    return prediction;
+}
+
 
 
 

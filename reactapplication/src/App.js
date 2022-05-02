@@ -10,7 +10,7 @@ function App() {
   const data = JSON.parse(JSON.stringify(dict));
   return (
     <div className = {css.container}>
-      <Header/>
+      <Header className = {css.AppHeader}/>
       <main className = {css.content}>
         <Textbox data = {data}/>
         <About/>
