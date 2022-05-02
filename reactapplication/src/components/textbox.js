@@ -1,15 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {suggest_text} from "../backend/suggest_text.js"
 import css from "./textbox.module.css"
+import predict_text2 from "../backend/predict_text";
 
 let suggestions = null;
+
 
 export default function Textbox(props) 
 {
     console.log("at the top of textbox code");
     //importing the json file
     const {data} = props;
-    
+
+    const [modeText, setModeText] = useState('Suggesting Text. Click To Predict Text');
+    const [predictOn, setPredictOn] = useState(false);
+
+    const [predictClicked, setPredictClicked] = useState(false);
+
     const [input, setInput] = useState('');
     const [words, setWords] = useState([]);
 
@@ -37,6 +44,8 @@ export default function Textbox(props)
 
         // Must set to false by default (with each change)
         setShowSuggestions(false);
+
+
 
         // we have added a character
         if( a.length >= iter)
@@ -72,14 +81,44 @@ export default function Textbox(props)
                     let mega_seed_key;
 
                     // decreases mega_key_size while no suggestions available
-                    suggestions = null;
-                    while (suggestions == null &&  j !== 0)
+
+
+                    // Suggest Text
+                    if (predictOn === false)
                     {
-                        mega_seed_key = words.slice(j).join(" ");
-                        suggestions = suggest_text(data, mega_seed_key, 10);
-                        j++;
+                        suggestions = null;
+                        while (suggestions == null &&  j !== 0)
+                        {
+                            mega_seed_key = words.slice(j).join(" ");
+                            suggestions = suggest_text(data, mega_seed_key, 10);
+                            j++;
+                        }
+                        setShowSuggestions(true);
                     }
-                    setShowSuggestions(true);
+                    else if (predictOn === true && predictClicked === true) // Predict Text
+                    {
+                        setPredictClicked(false); //return toggle to false
+
+                        let prediction = null;
+                        let wordsPredicted = 0;
+
+                        while (wordsPredicted < 3 || prediction !== null)
+                        {
+                            prediction = predict_text2(data, words, 3);
+                            if (prediction !== null) // if we have a valid prediction push to words and input
+                            {
+                                setInput(input + prediction + " ");
+                                setLastWordIter(iter); // not sure
+                                setIter(iter + prediction.length + 1);
+
+                                words.push(prediction);
+                                setWords(words);
+                            }
+                            wordsPredicted++;
+                        }
+                    }
+
+
                 }
             }
         }
@@ -96,6 +135,11 @@ export default function Textbox(props)
             }
 
         }
+    }
+
+
+    function addToInput(text){
+        setInput(input + text + " ");
     }
 
     //get characters
@@ -147,14 +191,41 @@ export default function Textbox(props)
             );
         }
 
+
+
+    const onToggle = () =>{
+        if(predictOn === true){
+            setModeText('Suggesting Text. Click to Predict Text');
+        }
+        else
+        {
+            setModeText('Predicting Text. Click to Suggest Text');
+        }
+
+        setPredictOn(!predictOn);
+        console.log("button clicked");
+    }
+
+    const onPredict = () => {
+        console.log("on Predict clicked");
+        setPredictClicked(true);
+    }
+
     return(
         <div className = {css.content}>
+            <button  className={css.button} onClick={onToggle}>
+                {modeText}
+            </button>
             <form autoComplete = "off">
                 <div className = {css.autocomplete}>
                     <textarea type="text" placeholder="Type a word and press space for a suggestion" id="carlInput" value={input} onChange={onChange} onKeyUp = {onSpace} />
                     {showSuggestions && <AutoSuggestionList />}
                 </div>
             </form>
+            <button className={css.button} onClick={onPredict}>
+                Predict 3 words
+            </button>
+
         </div>
     );
 }

@@ -60,3 +60,12 @@
 .suggestions li:not(:last-of-type) {
   border-bottom: 1px solid #999;
 }
+
+.button{
+    align-content: space-evenly;
+    width: 50%;
+}
+
+.content{
+
+}
