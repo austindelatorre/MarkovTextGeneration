@@ -21,6 +21,7 @@ C.A.R.L. is a probabilistic text generator, meaning that he relies on a large da
 
 ![plot](diagrams/prob_dict.PNG)
 
+
 #### 3. Predicting and Suggesting Text
 C.A.R.L. uses React.js for its UI. For ease of use, we have javascript look-up functions which utilize ```dict.json``` to generate sentences of many words (```predict_text``` or ```predict_text2```)  or a single word (```suggest_text```). The React application uses these functions to look up words to display to the user.
 
@@ -59,29 +60,34 @@ A React application where the user can type in a text box and the application wi
 
 ## Current Testing Usage
 
-- Make sure to install node.js
-- Make sure current directory is **backend**
-- run ```python main.py``` to generate dictionary *"dict.json"* (currently 1 to 3 degrees) for the urls in **"urls.txt"**
-- run ```node predict_text.js``` to test text prediction with dictionary "dict.json"
-  - Need to use the function ```predict_text(...)``` in react part of application 
+- Make sure current directory is **reactapplication/src/backend**
+- Run ```python main.py``` to generate dictionary *"dict.json"* (currently 1 to 3 degrees) for the urls in **"urls.txt"**
+- Set current directory to **reactapplication/src**
+- Run ```npm start``` to launch ReactApplication (User Iterface)
+  - Connect to **http://localhost:3000/MarkovTextGeneration** in your browser
+
+Alternatively:
+- Go to **https://austindelatorre.github.io/MarkovTextGeneration/** in your browser to view the deployed version
 
 
+## Improvements
 
-## Using this Repository
-- please be careful using github. Make sure when you push changes you are pushing your own code to the script you are working on. You can really mess stuff up if you are not careful.
-- Make sure to comment inline with your code and put proper commit messages with every commit.
-## Project Overview
-### Proposal
- Our proposal and LaTex file.
-### Write-Up
- A file for us to work on our write up to go into.
-### model1
- A very hacky first implementation of the concept. 
-## To-Do
-- Data Scraping for training text
-   - **STILL BROKEN SOMETIMES**
-- Parsing Data needs to be fixed
-- Front end and JS prediction logic
-   - Prediction is mostly done
-- Finalizing Chain formatting and structure
-- Do hard math on probibility of back and foward calculation 
+- Limitations on JS loading large json files limit the size of a dictionary
+- Accuracy / Intellegence of C.A.R.L. could be improved with a larger dictionary
+
+## Authors
+
+Cole Dumas (cadumas01)
+- Contributions: Dictionary creation, Dictionary lookup functions, UI
+
+Austin de la Torre (austindelatorre)
+- Contributions: Text-scraping and parsing, CLI, Basic Model
+
+Colin Martin (colimartin)
+- Contributions: Webscraping
+
+Matt Murno (MattMurn0)
+- Contributions: UI
+
+Dylan Leddy (leddyd)
+- Contributions: Text-scraping and parsing
