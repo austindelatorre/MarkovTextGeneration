@@ -22,14 +22,24 @@ C.A.R.L. is a probabilistic text generator, meaning that he relies on a large da
 ![plot](diagrams/prob_dict.PNG)
 
 #### 3. Predicting and Suggesting Text
-C.A.R.L. uses React.js for its UI. For ease of use, we have javascript look-up functions which utilize ```dict.json``` to generate sentences of many words (```predict_text```) or a single word (```suggest_text```). The React application uses these functions to look up words to display to the user.
+C.A.R.L. uses React.js for its UI. For ease of use, we have javascript look-up functions which utilize ```dict.json``` to generate sentences of many words (```predict_text``` or ```predict_text2```)  or a single word (```suggest_text```). The React application uses these functions to look up words to display to the user.
 
 About ```predict_text(seed_key, n, constant_key_size, max_key_size)```
 - Takes **seed_key** as the inital key and then generates multiple words (usually) based on the the previous **n** words (including words that predict_text generated itself)
+- Not currently implemented (Should be used for a much larger dictionary)
 - Paramaters: 
   - **seed_key**: seed_key is the first word (or phrase) that is used to begin text generation
   - **n**: number of words to predict in total
   - **constant_key_size**: True if key is always 1 word , false if key grows by adding words it has predicted
+  - **max_key_size**: Should be set to max degree of dictionary. In case of growing key size, key size will not exceed this value
+
+About ```predict_text2(data, words, max_key_size)```
+- Used in React UI
+- uses **words** array to randomly generate 1 prediction in **data** 
+  - Attempts to use final **max_key_size** words in **words** but will use fewer context words if no searches are available
+- Paramaters: 
+  - **data**: lookup dictionary
+  - **words**: array of words that will be used to form seed_key (key for looking up in dictionary)
   - **max_key_size**: Should be set to max degree of dictionary. In case of growing key size, key size will not exceed this value
   
 About ```suggest_text(seed_key, n)```
