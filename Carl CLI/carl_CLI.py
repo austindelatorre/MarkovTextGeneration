@@ -1,7 +1,7 @@
 import json 
 import os
 import sys
-
+import random 
 
 def carl_loop():
 	def print_results(phrase, results, n = 10):
