@@ -80,18 +80,18 @@ Alternatively:
 Cole Dumas (cadumas01)
 - Contributions: Dictionary creation, Dictionary lookup functions, UI
 
-
+<br/>
 Austin de la Torre (austindelatorre)
 - Contributions: Text-scraping and parsing, CLI, Basic Model
 
-
+<br/>
 Colin Martin (colimartin)
 - Contributions: Webscraping
 
-
+<br/>
 Matt Murno (MattMurn0)
 - Contributions: UI
 
-
+<br/>
 Dylan Leddy (leddyd)
 - Contributions: Text-scraping and parsing
